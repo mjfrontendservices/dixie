@@ -4,13 +4,13 @@
     "description": "Lorem ipsum app manifest",
     "icons": [
         {
-            "src": "./logo-96x96.jpeg",
-            "type": "image/jpeg",
+            "src": "./logo-96x96.png",
+            "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "./logobig.jpeg",
-            "type": "image/jpeg",
+            "src": "./logobig.png",
+            "type": "image/png",
             "sizes": "192x192"
         }
     ],

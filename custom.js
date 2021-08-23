@@ -179,7 +179,7 @@ dixie.forEach(element => {
                 </div>
             <div class="bot">
                 <div class="img">
-                    <img src="./logobig.jpeg" alt="">
+                    <img src="./logobig.png" alt="">
                 </div>
                 <div class="reply">
                     <p>${element.bot}</p>
