@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./libraries/bootstrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./libraries/bootstrap/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="./libraries/bootstrap/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="./libraries/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/regular.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/svg-with-js.min.css">
+    <link rel="stylesheet" href="./libraries/fontawesome/css/v4-shims.min.css">
+    <!-- manifest -->
+    <link rel="manifest" href="./manifestv1.json">
+    <!-- icon -->
+    <link rel="icon" href="./logobig.jpeg">
+    <!-- custom -->
+    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <title>Dixie</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <img src="./logobig.jpeg" alt="">
+            <b>Dixie</b>
+        </div>
+    </header>
+
+    <section class="input">
+        <div class="container">
+            <div class="inputDiv">
+                <input type="text" class="convoTxt" placeholder="Type something...">
+            </div>
+            <div class="sendBtnDiv">
+                <button class="sendBtn"><i class="fa fa-paper-plane send"></i></button>
+                <button class="loadBtn">
+                    <div class="spinner-border load"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="convos">
+        <div class="container">
+        </div>
+    </section>
+
+    <!-- jquery -->
+    <script src="./libraries/jquery/jquery.js"></script>
+    <!-- brain js -->
+    <script src="./libraries/brainjs/brain-browser.js"></script>
+    <!-- bootstrap -->
+    <script src="./libraries/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./libraries/bootstrap/bootstrap.min.js"></script>
+    <!-- sw registration -->
+    <script src="./swr.js"></script>
+    <script src="./custom.js"></script>
+</body>
+
+</html>

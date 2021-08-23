@@ -1,0 +1,22 @@
+{
+    "short_name": "Dixie",
+    "name": "Dixie Virtual Assistant",
+    "description": "Lorem ipsum app manifest",
+    "icons": [
+        {
+            "src": "./logo-96x96.jpeg",
+            "type": "image/jpeg",
+            "sizes": "96x96"
+        },
+        {
+            "src": "./logobig.jpeg",
+            "type": "image/jpeg",
+            "sizes": "192x192"
+        }
+    ],
+    "theme_color": "aliceblue",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "aliceblue",
+    "orientation": "portrait"
+}

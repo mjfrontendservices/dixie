@@ -1,0 +1,15 @@
+@media(max-width: 441px){
+    .input .inputDiv{
+        width: 80%;
+    }
+    
+    .input .sendBtnDiv{
+        width: 20%;
+    }
+    .convos .bot .img{
+        width: 15%;
+    }
+    .convos .bot .reply{
+        width: 75%;
+    }
+}

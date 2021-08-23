@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    margin-bottom: 0px;
+}
+
+/* header */
+
+header{
+    padding: 10px 0 10px 0;
+    background: #f4f4f4;
+    color: #35424a;
+}
+
+header img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+header b{
+    font-size: 20px;
+}
+
+/* input */
+
+.input {
+    padding: 10px 0 10px 0;
+}
+
+.input .container{
+    display: flex;
+}
+
+.input .inputDiv{
+    width: 90%;
+}
+
+.input .sendBtnDiv{
+    width: 10%;
+}
+
+.input .inputDiv input{
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    border: #35424a 1px solid;
+}
+
+.input .sendBtnDiv button{
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 0 12px 0px;
+    border: none;
+    background: #35424a;
+    color: #fff;
+}
+
+.input .sendBtnDiv .loadBtn{
+    display: none;
+}
+
+.input .sendBtnDiv .load{
+    width: 12px;
+    height: 12px;
+}
+
+/* convos */
+
+.convos{
+    padding: 10px 0 10px 0;
+}
+
+.convos .me{
+    padding: 5px 0 5px 0;
+    display: flex;
+}
+
+.convos .me .space{
+    width: 20%;
+}
+
+.convos .me .txt{
+    width: 80%;
+}
+
+.convos .me p{
+    font-size: 12px;
+    background: rgb(41, 152, 255);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.convos .bot{
+    padding: 5px 0 5px 0;
+    display: flex;
+}
+
+.convos .bot .img{
+    width: 10%;
+}
+
+.convos .bot .reply{
+    width: 80%;
+}
+
+.convos .bot .img img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.convos .bot .reply p{
+    font-size: 12px;
+    background: rgb(255, 184, 196);
+    color: #35424a;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
