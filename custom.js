@@ -31,128 +31,132 @@ if (time.getHours() > 12) {
 function output(trained, input, rawInput) {
     $.getJSON(trained, function (data) {
         // func
-        training(net, data);
+        training(net, data).then(function () {
+            // if time
+            if (prediction(net, input) === "time") {
 
-        // if time
-        if (prediction(net, input) === "time") {
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: `Time now is ${hour}:${time.getMinutes()}:${time.getSeconds()} ${indicator}`
+                }
 
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: `Time now is ${hour}:${time.getMinutes()}:${time.getSeconds()} ${indicator}`
-            }
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                }
 
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
+                // if google
+            } else if (prediction(net, input) === "Sure, opening google") {
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: prediction(net, input)
+                }
+
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://google.com');
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://google.com');
+                }
+
+                // if youtube
+            } else if (prediction(net, input) === "Sure, opening youtube") {
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: prediction(net, input)
+                }
+
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://youtube.com');
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://youtube.com');
+                }
+
+                // if facebook
+            } else if (prediction(net, input) === "Sure, opening facebook") {
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: prediction(net, input)
+                }
+
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://facebook.com');
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.open('https://facebook.com');
+                }
+
+                // if dont know
+            } else if (prediction(net, input) === "") {
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: "I don't know what you're talking about. Please make it short and clear."
+                }
+
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                }
+
+                // if normal chat
             } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
-            }
+                let conversationObject = {
+                    id: Date.now(),
+                    me: rawInput,
+                    bot: prediction(net, input)
+                }
 
-            // if google
-        } else if (prediction(net, input) === "Sure, opening google") {
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: prediction(net, input)
+                if (dixie.length === 3) {
+                    dixie.splice(0, 1);
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                } else {
+                    dixie.push(conversationObject);
+                    localStorage.setItem("DIXIE", JSON.stringify(dixie))
+                    window.location.reload();
+                }
             }
-
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://google.com');
-            } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://google.com');
-            }
-
-            // if youtube
-        } else if (prediction(net, input) === "Sure, opening youtube") {
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: prediction(net, input)
-            }
-
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://youtube.com');
-            } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://youtube.com');
-            }
-
-            // if facebook
-        } else if (prediction(net, input) === "Sure, opening facebook") {
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: prediction(net, input)
-            }
-
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://facebook.com');
-            } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.open('https://facebook.com');
-            }
-
-            // if dont know
-        } else if (prediction(net, input) === "") {
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: "I don't know what you're talking about. Please make it short and clear."
-            }
-
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
-            } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
-            }
-
-            // if normal chat
-        } else {
-            let conversationObject = {
-                id: Date.now(),
-                me: rawInput,
-                bot: prediction(net, input)
-            }
-
-            if (dixie.length === 3) {
-                dixie.splice(0, 1);
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
-            } else {
-                dixie.push(conversationObject);
-                localStorage.setItem("DIXIE", JSON.stringify(dixie))
-                window.location.reload();
-            }
-        }
-    });
+        });
+    })
 }
 
 function training(network, trainingData) {
-    return network.fromJSON(trainingData)
+    return new Promise(function (resolve, reject) {
+        network.fromJSON(trainingData);
+        let error = false;
+        !error ? resolve() : reject("Error loading the trained json file.");
+    });
 }
 
 function prediction(network, input) {
