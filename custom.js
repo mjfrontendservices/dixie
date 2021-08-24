@@ -33,7 +33,7 @@ function output(trained, input, rawInput) {
         // func
         training(net, data).then(function () {
             // if time
-            if (prediction(net, input) === "time") {
+            if (prediction(net, input) === "Sure, opening time" || prediction(net, input) === "time") {
 
                 let conversationObject = {
                     id: Date.now(),
