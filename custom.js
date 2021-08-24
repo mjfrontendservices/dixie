@@ -91,7 +91,7 @@ function output(trained, input, rawInput) {
                 }
 
                 // if facebook
-            } else if (prediction(net, input) === "Sure, opening facebook") {
+            } else if (prediction(net, input) === "Sure, opening facebook" || prediction(net, input) === "Sure, opening fb") {
                 let conversationObject = {
                     id: Date.now(),
                     me: rawInput,
