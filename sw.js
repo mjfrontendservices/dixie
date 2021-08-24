@@ -1,7 +1,7 @@
 /**
  * Cache version here...--------------------------------------
  */
-let cached_version = 'v4.0 Dixie';
+let cached_version = 'v5.0 Dixie';
 /**
  * Assets to be cached----------------------------------------
  */
