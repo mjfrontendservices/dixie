@@ -1,32 +1,20 @@
 let net = new brain.recurrent.LSTM();
-
 /**
  * LOCAL STORAGES ===========================================================================
  * 
  */
-
 let dixie = JSON.parse(localStorage.getItem("DIXIE"));
 let dixieTask = JSON.parse(localStorage.getItem("DIXIE_TASK_MANAGEMENT"));
 let taskTemporaryID = localStorage.getItem("DIXIE_TASK_TEMPORARY_ID");
 let taskEdit = JSON.parse(localStorage.getItem("DIXIE_TASK_EDIT"));
 
-if (!taskEdit) {
-    taskEdit = {};
-}
-
-if (!dixieTask) {
-    dixieTask = [];
-}
-
-if (!dixie) {
-    dixie = [];
-}
-
+if (!taskEdit) { taskEdit = {}; }
+if (!dixieTask) { dixieTask = []; }
+if (!dixie) { dixie = []; }
 /**
  * TIME AND DATE FOR CHAT ===========================================================================
  * 
  */
-
 let time = new Date();
 let hour = time.getHours();
 let indicator;
@@ -44,22 +32,14 @@ if (time.getHours() === 22) { hour = "10" }
 if (time.getHours() === 23) { hour = "11" }
 if (time.getHours() === 0) { hour = "12" }
 
-if (time.getHours() > 12) {
-    indicator = "PM";
-} else {
-    indicator = "AM";
-}
-
+time.getHours() > 12 ? indicator = "PM" : indicator = "AM";
 /**
  * MAIN FUNCTION FOR INSERTING CHAT ======================================================================
  * 
  */
-
 function output(trained, input, rawInput) {
     $.getJSON(trained, function (data) {
-        // func
         training(net, data).then(function () {
-            // if time
             if (prediction(net, input) === "time") {
 
                 let conversationObject = {
@@ -200,12 +180,10 @@ function output(trained, input, rawInput) {
         });
     })
 }
-
 /**
  * FOR LOADING MODEL ===========================================================================
  * 
  */
-
 function training(network, trainingData) {
     return new Promise(function (resolve, reject) {
         network.fromJSON(trainingData);
@@ -213,12 +191,10 @@ function training(network, trainingData) {
         !error ? resolve() : reject("Error loading the trained json file.");
     });
 }
-
 /**
  * FOR INPUT AND PREDICTION ===========================================================================
  * 
  */
-
 function prediction(network, input) {
     // array of pred
     const prediction = network.run(input);
@@ -232,14 +208,11 @@ function prediction(network, input) {
     const randomResponse = arrayOfPrediction[randomIndexGenerator];
     return randomResponse;
 }
-
 /**
  * MAIN CHATBOT AUTOLOADS ===========================================================================
  * 
  */
-
 let maxTask = dixieTask.length;
-console.log(maxTask)
 
 dixie.forEach(element => {
     // if task ask for input
@@ -289,7 +262,6 @@ dixie.forEach(element => {
                 </div>
             </div>
         `);
-
     } else {
         $('.convos .container').append(`
             <div class="me">
@@ -310,7 +282,7 @@ dixie.forEach(element => {
     }
 });
 
-let chatTaskCounter = 0
+let chatTaskCounter = 0;
 
 dixieTask.forEach(element => {
     chatTaskCounter++;
@@ -318,12 +290,10 @@ dixieTask.forEach(element => {
         ${chatTaskCounter}. ${element.task} at ${element.time} on ${element.date}<br>
     `);
 });
-
 /**
  * MODAL AUTOLOADS ===========================================================================
  * 
  */
-
 let taskCounter = 0
 
 dixieTask.forEach(element => {
@@ -360,12 +330,10 @@ $('.remove').click(function () {
     localStorage.setItem("DIXIE_TASK_MANAGEMENT", JSON.stringify(dixieTask));
     window.location.reload();
 });
-
 /**
  * EDIT PAGE AUTOLOADS ===========================================================================
  * 
  */
-
 $('.editSection .container').html(`
     <b>Edit Task Name</b>
     <input type="text" class="edittable" placeholder="Edit..." value="${taskEdit.task}"><br>
@@ -381,61 +349,39 @@ $('.save').click(function () {
     let edditedTask = $('.edittable').val();
     let taskIndex = dixieTask.findIndex(x => x.id === parseInt(id));
     if (edditedTask != "") {
-
-        // update
-
+        // update -----------------------------------------
         dixieTask[taskIndex].task = edditedTask;
         localStorage.setItem("DIXIE_TASK_MANAGEMENT", JSON.stringify(dixieTask));
-
-        // remove temporary data from edit
-
+        // remove temporary data from edit ----------------------------------
         taskEdit = {};
         localStorage.setItem("DIXIE_TASK_EDIT", JSON.stringify(taskEdit));
-
-        $('.msg').html(`
-            <p>
-                <b class="alert alert-success"><i class="fa fa-check"></i> Updated Successfully!</b>
-            </p>
-        `);
+        $('.msg').html(`<p><b class="alert alert-success"><i class="fa fa-check"></i> Updated Successfully!</b></p>`);
         window.location.href = './index.html';
     } else {
-        $('.msg').html(`
-            <p>
-                <b class="alert alert-danger"><i class="fa fa-times"></i> Please enter complete details!</b>
-            </p>
-        `);
+        $('.msg').html(`<p><b class="alert alert-danger"><i class="fa fa-times"></i> Please enter complete details!</b></p>`);
     }
 })
-
 /**
  * SEND CHAT BTN EXECUTE ALL ===========================================================================
  * 
  */
-
 $('.sendBtn').click(function () {
     const input = $('.convoTxt').val();
     const removeQuestion = input.replace('?', '',);
     const removeExclamation = removeQuestion.replace('!', '',);
     const removePeriod = removeExclamation.replace('.', '',);
     const finalData = removePeriod.replace("'", '',);
-
-    // func
+    // main ------------------------------------------------------------
     output('./trained/trained.json', finalData.toLowerCase(), input);
-    // console.log(finalData);
-
     $(this).hide();
     $('.loadBtn').show();
 });
-
 /**
  * ADD TASKS ===========================================================================
  * 
  */
-
 $('.addTask').click(function () {
-
-    // TIME PROCESSED
-
+    // TIME PROCESSED -----------------------------------------
     let time = $('.time').val();
     let date = $('.date').val();
 
@@ -459,14 +405,8 @@ $('.addTask').click(function () {
     if (hour === "23") { hourNew = "11" }
     if (hour === "0") { hourNew = "12" }
 
-    if (hour > 12) {
-        indicator = "PM";
-    } else {
-        indicator = "AM";
-    }
-
-    // DATE PROCESSED
-
+    hour > 12 ? indicator = "PM" : indicator = "AM";
+    // DATE PROCESSED ---------------------------------------
     let dateArray = date.split("-");
     let month;
 
@@ -497,17 +437,13 @@ $('.addTask').click(function () {
         $('.errorTask').text("Please complete the task inputs.");
     } else {
         dixieTask.push(taskObject);
-
-        // insert to task management
-
+        // insert to task management ----------------------------------------------------
         localStorage.setItem("DIXIE_TASK_MANAGEMENT", JSON.stringify(dixieTask));
-
-        // get chat bot id and change the chat bot text to thanks...
-
+        // get chat bot id and change the chat bot text to thanks... --------------------------------
         let chatBotIdTask = localStorage.getItem("DIXIE_TASK_TEMPORARY_ID");
         let dixieConvoIndex = dixie.findIndex(x => x.id === parseInt(chatBotIdTask));
         dixie[dixieConvoIndex].bot = "Okay sir, your task now has been added.";
-        // storages
+        // storages -----------------------------------------------------
         localStorage.setItem("DIXIE", JSON.stringify(dixie));
         localStorage.setItem("DIXIE_TASK_TEMPORARY_ID", "");
         $('.inputTask').hide();
