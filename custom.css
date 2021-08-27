@@ -7,18 +7,31 @@ h1, h2, h3, h4, h5, h6, p{
     margin-bottom: 0px;
 }
 
+/* global */
+
+.count {
+    color: red;
+}
+
+.nameItalic{
+    font-size: 12px;
+    font-style: italic;
+}
+
 /* header */
 
 header{
     padding: 10px 0 10px 0;
     background: #f4f4f4;
     color: #35424a;
+    border-bottom: rgb(245, 104, 127) 2px solid;
 }
 
 header img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: rgb(245, 104, 127) 2px solid;
 }
 
 header b{
@@ -113,13 +126,95 @@ header b{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: rgb(245, 104, 127) 2px solid;
 }
 
 .convos .bot .reply p{
     font-size: 12px;
-    background: rgb(255, 184, 196);
+    background: rgb(211, 245, 255);
     color: #35424a;
     padding: 10px;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.convos .bot .reply .inputTask{
+    font-size: 12px;
+    padding: 10px 0 10px 0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background: rgb(211, 245, 255);
+}
+
+.convos .bot .reply .inputTask input{
+    width: 100%;
+    font-size: 12px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: #35424a 1px solid;
+}
+
+.convos .bot .reply .inputTask button{
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    background: #35424a;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+}
+
+/* tasks */
+
+.actions {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    margin-top: 20px;
+    background: #35424a;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+}
+
+/* modal */
+
+.modal-header,
+.modal-footer{
+    background: rgb(211, 245, 255);
+}
+
+.modal-dialog p{
+    font-size: 12px;
+}
+
+.modal-dialog button{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.allTaskCounter{
+    font-size: 11px;
+    color: red;
+}
+
+/* edit page */
+
+.editSection {
+    padding: 10px 0 10px 0;
+}
+
+.editSection input{
+    width: 100%;
+    font-size: 12px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: #35424a 1px solid;
+}
+
+.editSection button{
+    font-size: 12px;
 }

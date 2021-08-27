@@ -6,7 +6,7 @@ let cached_version = 'v5.0 Dixie';
  * Assets to be cached----------------------------------------
  */
 let cached_assets = [
-
+    './edit.html'
 ];
 
 // install event
