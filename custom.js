@@ -372,7 +372,7 @@ $('.sendBtn').click(function () {
     const removePeriod = removeExclamation.replace('.', '',);
     const finalData = removePeriod.replace("'", '',);
     // main ------------------------------------------------------------
-    output('./trained/trained.json', finalData.toLowerCase(), input);
+    output('./trained/trained_last.json', finalData.toLowerCase(), input);
     $(this).hide();
     $('.loadBtn').show();
 });
